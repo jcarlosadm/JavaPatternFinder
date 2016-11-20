@@ -12,7 +12,7 @@ public class Main implements Study {
 	}
 
 	public void execute() {
-		// TODO Auto-generated method stub
+		// TODO implement
 		
 	}
 }
