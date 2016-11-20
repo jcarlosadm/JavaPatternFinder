@@ -8,3 +8,5 @@ repos
 repos/**
 outputs
 outputs/**
+
+*projects.json
