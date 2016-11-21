@@ -2,11 +2,8 @@
 /target/
 .classpath
 .project
-.settings
-.settings/**
-repos
-repos/**
-outputs
-outputs/**
+/.settings/
+/repos/
+/outputs/
 
 *projects.json
