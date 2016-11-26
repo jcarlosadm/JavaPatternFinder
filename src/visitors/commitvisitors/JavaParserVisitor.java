@@ -40,7 +40,14 @@ public class JavaParserVisitor implements CommitVisitor {
 			if (astVisitor.getInnerClassFrequency() > 0) {
 				this.writeFrequency(wParameter, "inner class", astVisitor.getInnerClassFrequency());
 			}
-
+			
+			if (astVisitor.getGenericsFreq() > 0) {
+				this.writeFrequency(wParameter, "generics", astVisitor.getGenericsFreq());
+			}
+			
+			if (astVisitor.getAnnotationsFrequency() > 0) {
+				this.writeFrequency(wParameter, "annotations", astVisitor.getAnnotationsFrequency());
+			}
 		}
 	}
 

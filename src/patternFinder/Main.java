@@ -16,11 +16,14 @@ import util.repos.Repository;
 import visitors.commitvisitors.JavaParserVisitor;
 
 public class Main implements Study {
+
+	private static boolean CLONE_REPOS = true;
+
 	public static void main(String[] args) {
 
 		DOMConfigurator.configure("log4j.xml");
 
-		if (!Folders.makeFolders() || !Repository.cloneRepos()) {
+		if (!Folders.makeFolders() || (CLONE_REPOS && !Repository.cloneRepos())) {
 			return;
 		}
 
