@@ -34,7 +34,7 @@ public class JavaParserVisitor implements CommitVisitor {
 			WriteFrequencyParameter wParameter = new WriteFrequencyParameter(writer, repo, commit, modification);
 
 			if (astVisitor.getLambdaExpressionFrequency() > 0) {
-				this.writeFrequency(wParameter, "lamda expression", astVisitor.getLambdaExpressionFrequency());
+				this.writeFrequency(wParameter, "lambda expression", astVisitor.getLambdaExpressionFrequency());
 			}
 			
 			if (astVisitor.getInnerClassFrequency() > 0) {
