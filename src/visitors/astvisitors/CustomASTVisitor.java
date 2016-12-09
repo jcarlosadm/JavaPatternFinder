@@ -6,14 +6,14 @@ import java.util.regex.Pattern;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.LambdaExpression;
-import org.eclipse.jdt.core.dom.MarkerAnnotation;
-import org.eclipse.jdt.core.dom.NormalAnnotation;
-import org.eclipse.jdt.core.dom.SingleMemberAnnotation;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 public class CustomASTVisitor extends ASTVisitor {
 
-	private static final String GENERICS_REGEX = "<[A-Z][a-z]+>";
+	// private static final String GENERICS_REGEX = "<[A-Z][a-z]+>";
+	private static final String GENERICS_REGEX = "<[\\s?A-Z?a-z?\\s?]*>";
+	
+	private static final String ANNOTATIONS_REGEX = "@";
 
 	private int lambdaExpressionFrequency = 0;
 	
@@ -60,26 +60,14 @@ public class CustomASTVisitor extends ASTVisitor {
 			while (matcher.find()) {
 				++this.genericsFreq;
 			}
+			
+			pattern = Pattern.compile(ANNOTATIONS_REGEX);
+			matcher = pattern.matcher(node.toString());
+			while (matcher.find()) {
+				++this.annotationsFrequency;
+			}
 		}
 		
-		return super.visit(node);
-	}
-	
-	@Override
-	public boolean visit(NormalAnnotation node) {
-		++this.annotationsFrequency;
-		return super.visit(node);
-	}
-	
-	@Override
-	public boolean visit(MarkerAnnotation node) {
-		++this.annotationsFrequency;
-		return super.visit(node);
-	}
-	
-	@Override
-	public boolean visit(SingleMemberAnnotation node) {
-		++this.annotationsFrequency;
 		return super.visit(node);
 	}
 }
