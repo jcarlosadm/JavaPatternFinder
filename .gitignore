@@ -7,3 +7,4 @@
 /outputs/
 
 *projects.json
+!example-projects.json
